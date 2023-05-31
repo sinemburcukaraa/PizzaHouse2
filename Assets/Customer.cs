@@ -89,6 +89,29 @@ public class Customer : MonoBehaviour
         CustomerManager.instance.StartCoroutine(CustomerManager.instance.RandomSeconds(CustomerManager.instance.Value()));
         RemoveCus = true;
     }
+    public GameObject pineappleUI,pepperUI;
+    public void customerCountUý()
+    {
+        for (int i = 0; i < NotificationManager.instance.uýObject.Count; i++)
+        {
+            if (CustomerId == "pineapple" && !NotificationManager.instance.uýObject[3].activeInHierarchy)
+            {
+                NotificationManager.instance.uýObject[3].SetActive(true);
+            }
+            else if(CustomerId == "Pepper" && !NotificationManager.instance.uýObject[2].activeInHierarchy)
+            {
+                NotificationManager.instance.uýObject[2].SetActive(true);
+            }
+
+            if (CustomerId == NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().id)
+            {
+                NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().textCount += 1;
+                NotificationManager.instance.uýObject[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().textCount.ToString();
+                break;
+            }
+
+        }
+    }
     private void OnTriggerEnter(Collider other)//müþterinin sandalyeye oturma kýsmý
     {
         if (other.tag == "Chair")
@@ -112,6 +135,7 @@ public class Customer : MonoBehaviour
                 {
                     sliderControlBool = false;
                     OrderBaloon.SetActive(true);
+                    customerCountUý();
                     SliderControl();
                 }
             }

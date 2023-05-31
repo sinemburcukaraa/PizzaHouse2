@@ -173,7 +173,8 @@ public class Order : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             //customer.GetComponent<Customer>().animator.SetBool("SittingTalking", false);//+90rot
             customer.GetComponent<Customer>().animator.SetBool("SittingAngry", true);//+90rot
-
+            PlayerController.instance.MoneyCount -= 10;
+            PlayerController.instance.MoneyText.text = PlayerController.instance.MoneyCount.ToString();
 
             yield return new WaitForSeconds(2f);
             customer.GetComponent<Customer>().customerLeaveControl = true;

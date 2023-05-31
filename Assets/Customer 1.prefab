@@ -606,6 +606,8 @@ MonoBehaviour:
   sliderTimer: {fileID: 3099310133687146560}
   CorrectOrWrongPizza: 0
   sliderBool: 0
+  pineappleUI: {fileID: 0}
+  pepperUI: {fileID: 0}
 --- !u!114 &6811033608335934630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NotificationPanel: {fileID: 0}
   notification: {fileID: 0}
+  id: 0
 --- !u!1 &1963466762922389247
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,10 +39,30 @@ public class PlayerController : MonoBehaviour
             instance = this;
         }        
     }
+    public void speedControl() 
+    {
+        if (MoneyCount >= 500 && MoneyCount < 1000)
+        {
+            moveSpeed = 6;
+        }
+        else if (MoneyCount >= 1000 && MoneyCount < 1500)
+        {
+            moveSpeed = 7;
+        }
+        else if(MoneyCount >= 1500 && MoneyCount < 2000)
+        {
+            moveSpeed = 8;
+        }
+        else if(MoneyCount > 2000)
+        {
+            moveSpeed = 9;
+        }
+    }
     private void FixedUpdate()
     {
         if (Active)//*active && GameManager.instance.gameSituation == GameManager.GameSituation.isStarted*/ 
         {
+            speedControl();
             rigidbody.velocity = new Vector3(ultimateJoystick.GetVerticalAxis() * (-moveSpeed), rigidbody.velocity.y, ultimateJoystick.GetHorizontalAxis() * (moveSpeed));
             if (ultimateJoystick.GetHorizontalAxis() != 0 || ultimateJoystick.GetVerticalAxis() != 0)
             {
