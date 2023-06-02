@@ -31,7 +31,7 @@ public class GameControl : MonoBehaviour
 
         if (newAreaList.Count != 0)
         {
-            if (CustomerChairControl.instance.ChairCount.Count == 2 && !control)//2 sandalye == 1 masa
+            if (CustomerChairControl.instance.ChairCount.Count >= 4 && !control)//2 sandalye == 1 masa
             {
                 control = true;
                 this.transform.GetChild(0).gameObject.SetActive(true); newAreaList.RemoveAt(0);

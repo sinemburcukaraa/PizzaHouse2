@@ -5576,12 +5576,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaText: {fileID: 7271094361289628680}
-  areaCount: 20
+  areaCount: 150
   Money: {fileID: 4042200138665112875, guid: 0a6ba6b024a3d3f49a187925e3a10082, type: 3}
   Prefab: {fileID: 7950538037086939721, guid: 10927b9a3c3b8d64da98f3c545914cee, type: 3}
   bigScaleValue: 0.25
   smallScaleValue: 0.2
   AreaList: []
+  id: PineappleArea
+  PrefsId: PineappleArea5
   posControl: {x: -16.35, y: -0.08, z: 5.5}
   yRot: 0
   xRot: 0
@@ -5861,6 +5863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7271094360731804161}
+  - component: {fileID: 8504478387924121024}
   m_Layer: 0
   m_Name: PineappleArea
   m_TagString: Untagged
@@ -5887,6 +5890,19 @@ Transform:
   m_Father: {fileID: 173645364339734994}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8504478387924121024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7271094360731804160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30a8415144710247b93c27855f70ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PineappleList: []
 --- !u!1 &7271094361289628686
 GameObject:
   m_ObjectHideFlags: 0
@@ -6338,12 +6354,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaText: {fileID: 7271094360512442369}
-  areaCount: 20
+  areaCount: 100
   Money: {fileID: 4042200138665112875, guid: 0a6ba6b024a3d3f49a187925e3a10082, type: 3}
   Prefab: {fileID: 7950538037086939721, guid: 10927b9a3c3b8d64da98f3c545914cee, type: 3}
   bigScaleValue: 0.25
   smallScaleValue: 0.2
   AreaList: []
+  id: PineappleArea
+  PrefsId: PineappleArea4
   posControl: {x: -16.35, y: -0.08, z: 5.5}
   yRot: 0
   xRot: 0
@@ -6466,6 +6484,8 @@ MonoBehaviour:
   bigScaleValue: 0.25
   smallScaleValue: 0.2
   AreaList: []
+  id: PineappleArea
+  PrefsId: PineappleArea1
   posControl: {x: -16.35, y: -0.08, z: 5.5}
   yRot: 0
   xRot: 0
@@ -6752,12 +6772,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaText: {fileID: 7271094361897514591}
-  areaCount: 20
+  areaCount: 70
   Money: {fileID: 4042200138665112875, guid: 0a6ba6b024a3d3f49a187925e3a10082, type: 3}
   Prefab: {fileID: 7950538037086939721, guid: 10927b9a3c3b8d64da98f3c545914cee, type: 3}
   bigScaleValue: 0.25
   smallScaleValue: 0.2
   AreaList: []
+  id: PineappleArea
+  PrefsId: PineappleArea3
   posControl: {x: -16.35, y: -0.08, z: 5.5}
   yRot: 0
   xRot: 0
@@ -7139,12 +7161,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaText: {fileID: 7271094361797047901}
-  areaCount: 20
+  areaCount: 50
   Money: {fileID: 4042200138665112875, guid: 0a6ba6b024a3d3f49a187925e3a10082, type: 3}
   Prefab: {fileID: 7950538037086939721, guid: 10927b9a3c3b8d64da98f3c545914cee, type: 3}
   bigScaleValue: 0.25
   smallScaleValue: 0.2
   AreaList: []
+  id: PineappleArea
+  PrefsId: PineappleArea2
   posControl: {x: -16.35, y: -0.08, z: 5.5}
   yRot: 0
   xRot: 0

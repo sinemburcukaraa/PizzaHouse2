@@ -14,9 +14,20 @@ public class GameArea : MonoBehaviour
     public float smallScaleValue;
     public List<GameObject> AreaList = new List<GameObject>();
 
+    public string id;
+    public string PrefsId;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt(PrefsId)==0)
+        {
+            PlayerPrefs.SetInt(PrefsId, areaCount);
+        }
+    }
 
     private void Start()
     {
+        areaCount = PlayerPrefs.GetInt(PrefsId);
         for (int i = 0; i < this.transform.parent.childCount; i++)
         {
             AreaList.Add(this.transform.parent.GetChild(i).gameObject);
@@ -35,6 +46,77 @@ public class GameArea : MonoBehaviour
 
             });
         });
+    }
+    public void playerPrefsControl() 
+    {
+
+        if (id=="Chair")
+        {
+            UIManager.instance.chairCount++;
+            if (UIManager.instance.chairCount>=PlayerPrefs.GetInt("Chair"))
+            {
+                PlayerPrefs.SetInt("Chair", UIManager.instance.chairCount);
+                Debug.Log(PlayerPrefs.GetInt("Chair"));
+            }
+
+        }
+        if (id=="Field")
+        {
+            UIManager.instance.fieldCount++;
+            if (UIManager.instance.fieldCount >= PlayerPrefs.GetInt("Field"))
+            {
+                PlayerPrefs.SetInt("Field", UIManager.instance.fieldCount);
+                Debug.Log(PlayerPrefs.GetInt("Field"));
+            }
+
+        }
+        if (id=="Counter")
+        {
+            UIManager.instance.counterCount++;
+            if (UIManager.instance.counterCount >= PlayerPrefs.GetInt("Counter"))
+            {
+                PlayerPrefs.SetInt("Counter", UIManager.instance.counterCount);
+                Debug.Log(PlayerPrefs.GetInt("Counter"));
+            }
+
+        }
+
+        if (id == "FieldArea")
+        {
+            UIManager.instance.FieldAreaCount++;
+            if (UIManager.instance.FieldAreaCount >= PlayerPrefs.GetInt("FieldArea"))
+            {
+                PlayerPrefs.SetInt("FieldArea", UIManager.instance.FieldAreaCount);
+                Debug.Log(PlayerPrefs.GetInt("FieldArea"));
+            }
+        }
+        if (id == "MushroomArea")
+        {
+            UIManager.instance.mushroomAreaCount++;
+            if (UIManager.instance.mushroomAreaCount >= PlayerPrefs.GetInt("MushroomArea"))
+            {
+                PlayerPrefs.SetInt("MushroomArea", UIManager.instance.mushroomAreaCount);
+                Debug.Log(PlayerPrefs.GetInt("MushroomArea"));
+            }
+        }
+        if (id == "PineappleArea")
+        {
+            UIManager.instance.PineappleAreaCount++;
+            if (UIManager.instance.PineappleAreaCount >= PlayerPrefs.GetInt("PineappleArea"))
+            {
+                PlayerPrefs.SetInt("PineappleArea", UIManager.instance.PineappleAreaCount);
+                Debug.Log(PlayerPrefs.GetInt("PineappleArea"));
+            }
+        }
+        if (id == "pepperArea")
+        {
+            UIManager.instance.pepperAreaCount++;
+            if (UIManager.instance.pepperAreaCount >= PlayerPrefs.GetInt("pepperArea"))
+            {
+                PlayerPrefs.SetInt("pepperArea", UIManager.instance.pepperAreaCount);
+                Debug.Log(PlayerPrefs.GetInt("pepperArea"));
+            }
+        }
     }
     bool countCheck;
     private void OnTriggerEnter(Collider other)
@@ -75,7 +157,6 @@ public class GameArea : MonoBehaviour
         {
             //Money spawn
             GameObject cloneMoney = Instantiate(Money, PlayerController.instance.Player.transform.position + new Vector3(0, 0.5f, 0), Quaternion.Euler(0, 90, 0));
-
             cloneMoney.transform.DOMove(this.transform.position, 0.2f).OnComplete(() =>
             {
                 cloneMoney.SetActive(false);
@@ -87,7 +168,8 @@ public class GameArea : MonoBehaviour
             PlayerController.instance.MoneyText.text = PlayerController.instance.MoneyCount.ToString();
 
             areaCount -= 10;
-            areaText.text = areaCount.ToString();
+            PlayerPrefs.SetInt(PrefsId, areaCount);
+            areaText.text = PlayerPrefs.GetInt(PrefsId).ToString();
             if (areaCount == 0)
             {
                 TakeObj();
@@ -121,7 +203,10 @@ public class GameArea : MonoBehaviour
 
         if (control)
         {
+            playerPrefsControl();
+
             GameObject clonePrefab = Instantiate(Prefab, this.transform.position + posControl, Quaternion.Euler(xRot, yRot, 0));
+
             //if (scaleBool)
             //{
             //    //scale = clonePrefab.transform.localScale;

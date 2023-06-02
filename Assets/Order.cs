@@ -18,7 +18,9 @@ public class Order : MonoBehaviour
     public Sprite happy;
     public Sprite angry;
     public static Order instance;
-    
+    public int id = 0;
+
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")// müþteriye doðru pizzanýn verildiði kontrol kýsým

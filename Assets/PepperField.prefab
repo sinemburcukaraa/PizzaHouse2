@@ -185,6 +185,8 @@ MonoBehaviour:
   bigScaleValue: 0.23
   smallScaleValue: 0.2
   AreaList: []
+  id: pepperArea
+  PrefsId: pepperArea2
   posControl: {x: -0.3, y: 0.9, z: 0.3}
   yRot: 0
   xRot: 0
@@ -342,6 +344,8 @@ MonoBehaviour:
   bigScaleValue: 0.23
   smallScaleValue: 0.2
   AreaList: []
+  id: pepperArea
+  PrefsId: pepperArea3
   posControl: {x: -0.3, y: 0.9, z: 0.3}
   yRot: 0
   xRot: 0
@@ -1417,6 +1421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 945598968061163420}
+  - component: {fileID: 7765965702239168076}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -1441,6 +1446,19 @@ Transform:
   m_Father: {fileID: 945598967961190082}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7765965702239168076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945598968061163421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf12ec4aeb1f6f41abbb01e3bd79a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PepperList: []
 --- !u!1 &945598968315643224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1599,8 @@ MonoBehaviour:
   bigScaleValue: 0.23
   smallScaleValue: 0.2
   AreaList: []
+  id: pepperArea
+  PrefsId: pepperArea1
   posControl: {x: -0.3, y: 0.9, z: 0.3}
   yRot: 0
   xRot: 0

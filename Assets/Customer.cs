@@ -63,6 +63,8 @@ public class Customer : MonoBehaviour
             CustomerChairControl.instance.emptyChairPos[randomChair].parent.GetComponent<Order>().CustomerOnChair.Add(this.gameObject);//customer listesi
             CustomerChairControl.instance.fullChairPos.Add(CustomerChairControl.instance.emptyChairPos[randomChair]);
             CustomerChairControl.instance.emptyChairPos.RemoveAt(randomChair);
+            GameControl.instance.newArea();
+
 
         });
     }
@@ -80,6 +82,7 @@ public class Customer : MonoBehaviour
     }
     public void customerLeft()//müþteri ilk pozisyonuna navmesh ile geri döner
     {
+        customerLeftCountUý();
         navMesh.enabled = true;
         navMesh.destination = CustomerManager.instance.CustomerPos.position;
         animator.SetBool("SittingAngry", false);
@@ -106,6 +109,28 @@ public class Customer : MonoBehaviour
             if (CustomerId == NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().id)
             {
                 NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().textCount += 1;
+                NotificationManager.instance.uýObject[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().textCount.ToString();
+                break;
+            }
+
+        }
+    }
+    public void customerLeftCountUý()
+    {
+        for (int i = 0; i < NotificationManager.instance.uýObject.Count; i++)
+        {
+            if (CustomerId == "pineapple" && !NotificationManager.instance.uýObject[3].activeInHierarchy)
+            {
+                NotificationManager.instance.uýObject[3].SetActive(true);
+            }
+            else if (CustomerId == "Pepper" && !NotificationManager.instance.uýObject[2].activeInHierarchy)
+            {
+                NotificationManager.instance.uýObject[2].SetActive(true);
+            }
+
+            if (CustomerId == NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().id)
+            {
+                NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().textCount -= 1;
                 NotificationManager.instance.uýObject[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = NotificationManager.instance.uýObject[i].GetComponent<UýObjectÝd>().textCount.ToString();
                 break;
             }

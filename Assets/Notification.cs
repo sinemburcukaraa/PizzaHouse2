@@ -14,7 +14,7 @@ public class Notification : MonoBehaviour
     void Start()
     {
         NotificationPanel = NotificationManager.instance.NotificationImage[id];
-        print(NotificationManager.instance.notificationId);
+
         notification = NotificationPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         NotificationPanel.gameObject.SetActive(true);
         StartCoroutine(Num());
