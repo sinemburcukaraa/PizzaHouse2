@@ -41,19 +41,19 @@ public class PlayerController : MonoBehaviour
     }
     public void speedControl() 
     {
-        if (MoneyCount >= 500 && MoneyCount < 1000)
+        if (CustomerChairControl.instance.ChairCount.Count>=4 && CustomerChairControl.instance.ChairCount.Count <= 6)
         {
             moveSpeed = 6;
         }
-        else if (MoneyCount >= 1000 && MoneyCount < 1500)
+        else if (CustomerChairControl.instance.ChairCount.Count >= 7 && CustomerChairControl.instance.ChairCount.Count <= 10)
         {
             moveSpeed = 7;
         }
-        else if(MoneyCount >= 1500 && MoneyCount < 2000)
+        else if(CustomerChairControl.instance.ChairCount.Count >= 11 && CustomerChairControl.instance.ChairCount.Count <= 12)
         {
             moveSpeed = 8;
         }
-        else if(MoneyCount > 2000)
+        else if(CustomerChairControl.instance.ChairCount.Count >= 13)
         {
             moveSpeed = 9;
         }

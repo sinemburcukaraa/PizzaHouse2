@@ -41,7 +41,6 @@ public class Order : MonoBehaviour
         if (other.tag == "Player")
         {
             NumCheck = false;
-
         }
     }
     public void TakeCustomerMoney(Collider other) //müþteri parasýný alma

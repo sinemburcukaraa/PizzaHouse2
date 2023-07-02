@@ -167,9 +167,9 @@ public class Customer : MonoBehaviour
         }
     }
 
-    public void SliderControl()// problem ne?? bazen pizza veremiyorum onu çöz
+    public void SliderControl()
     {
-        sliderTimer.DOValue(0, 10, snapping: false).OnComplete(() =>
+        sliderTimer.DOValue(0, 60, snapping: false).OnComplete(() =>
         {
             sliderTimer.gameObject.SetActive(false);
             order.StartCoroutine(order.CustomerLeave(this.gameObject, OrderBaloon));

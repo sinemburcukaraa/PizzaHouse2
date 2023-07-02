@@ -22,7 +22,6 @@ public class AreaManager : MonoBehaviour
             AreaList[i].SetActive(true);
             AreaList[i].GetComponent<GameArea>().TakeObj();
         }
-        //AreaList[PlayerPrefs.GetInt("Chair") + 1].SetActive(true);
 
         for (int i = 0; i < PlayerPrefs.GetInt("Field"); i++)
         {
