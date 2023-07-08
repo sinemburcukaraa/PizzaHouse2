@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class pizza : MonoBehaviour
 {
-   public string id;
+    public string id;
+    public void Particle()
+    {
+        this.transform.GetChild(1).transform.gameObject.SetActive(true);
+    }
 }

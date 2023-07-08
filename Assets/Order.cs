@@ -54,6 +54,9 @@ public class Order : MonoBehaviour
                    lastMoney.SetActive(false);
                    PlayerController.instance.MoneyCount += 10;
                    PlayerController.instance.MoneyText.text = PlayerController.instance.MoneyCount.ToString();
+                   PlayerPrefs.SetInt("Money", PlayerController.instance.MoneyCount);
+                   PlayerController.instance.MoneyText.text = PlayerPrefs.GetInt("Money").ToString();
+
                });
 
             StartCoroutine(TakeMoneyNum(other));
@@ -76,7 +79,6 @@ public class Order : MonoBehaviour
         }
 
     }
-
     public void CustomerRequests()//müþteri Ýstekleri 
     {
         if (CustomerOnChair.Count != 0 && PlayerController.instance.PizzaStackObject.Count != 0)
@@ -90,42 +92,75 @@ public class Order : MonoBehaviour
                     CustomerOnChair[0].GetComponent<Customer>().customerHasPizza = false;
                     CustomerOnChair[0].GetComponent<Customer>().CorrectOrWrongPizza = true;
                     GivePizza(0, i);
+
                     break;
                 }
-                if (CustomerOnChair.Count > 1)
+
+                if (CustomerOnChair.Count == 1)
+                    break;
+                else
                 {
                     if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id == CustomerOnChair[1].GetComponent<Customer>().CustomerId && CustomerOnChair[1].GetComponent<Customer>().customerHasPizza)
                     {
                         CustomerOnChair[1].GetComponent<Customer>().customerHasPizza = false;
                         CustomerOnChair[1].GetComponent<Customer>().CorrectOrWrongPizza = true;
                         GivePizza(1, i);
+
                         break;
-                    }
-                }
-               
-                if (i == 0)
-                {
-                    if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id != CustomerOnChair[0].GetComponent<Customer>().CustomerId && CustomerOnChair[0].GetComponent<Customer>().customerHasPizza)
-                    {
-                        CustomerOnChair[0].GetComponent<Customer>().customerHasPizza = false;
-                        CustomerOnChair[0].GetComponent<Customer>().CorrectOrWrongPizza = false;
-                        GivePizza(0, i);
-                        break;
-                    }
-                    if (CustomerOnChair.Count > 1)
-                    {
-                        if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id != CustomerOnChair[1].GetComponent<Customer>().CustomerId && CustomerOnChair[1].GetComponent<Customer>().customerHasPizza)
-                        {
-                            CustomerOnChair[1].GetComponent<Customer>().customerHasPizza = false;
-                            CustomerOnChair[1].GetComponent<Customer>().CorrectOrWrongPizza = false;
-                            GivePizza(1, i);
-                            break;
-                        }
                     }
                 }
             }
         }
     }
+    //public void CustomerRequests()//müþteri Ýstekleri 
+    //{
+    //    if (CustomerOnChair.Count != 0 && PlayerController.instance.PizzaStackObject.Count != 0)
+    //    {
+    //        pizzalistCount = PlayerController.instance.PizzaStackObject.Count;
+    //        CustomerlistCount = CustomerOnChair.Count;
+    //        for (int i = pizzalistCount - 1; i >= 0; i--)
+    //        {
+    //            if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id == CustomerOnChair[0].GetComponent<Customer>().CustomerId && CustomerOnChair[0].GetComponent<Customer>().customerHasPizza)
+    //            {
+    //                CustomerOnChair[0].GetComponent<Customer>().customerHasPizza = false;
+    //                CustomerOnChair[0].GetComponent<Customer>().CorrectOrWrongPizza = true;
+    //                GivePizza(0, i);
+    //                break;
+    //            }
+    //            if (CustomerOnChair.Count > 1)
+    //            {
+    //                if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id == CustomerOnChair[1].GetComponent<Customer>().CustomerId && CustomerOnChair[1].GetComponent<Customer>().customerHasPizza)
+    //                {
+    //                    CustomerOnChair[1].GetComponent<Customer>().customerHasPizza = false;
+    //                    CustomerOnChair[1].GetComponent<Customer>().CorrectOrWrongPizza = true;
+    //                    GivePizza(1, i);
+    //                    break;
+    //                }
+    //            }
+
+    //            if (i == 0)
+    //            {
+    //                if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id != CustomerOnChair[0].GetComponent<Customer>().CustomerId && CustomerOnChair[0].GetComponent<Customer>().customerHasPizza)
+    //                {
+    //                    CustomerOnChair[0].GetComponent<Customer>().customerHasPizza = false;
+    //                    CustomerOnChair[0].GetComponent<Customer>().CorrectOrWrongPizza = false;
+    //                    GivePizza(0, i);
+    //                    break;
+    //                }
+    //                if (CustomerOnChair.Count > 1)
+    //                {
+    //                    if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id != CustomerOnChair[1].GetComponent<Customer>().CustomerId && CustomerOnChair[1].GetComponent<Customer>().customerHasPizza)
+    //                    {
+    //                        CustomerOnChair[1].GetComponent<Customer>().customerHasPizza = false;
+    //                        CustomerOnChair[1].GetComponent<Customer>().CorrectOrWrongPizza = false;
+    //                        GivePizza(1, i);
+    //                        break;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
     GameObject removeObj;
     public void GivePizza(int index, int i)// müþteriye pizza verme 
     {
@@ -174,8 +209,11 @@ public class Order : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             //customer.GetComponent<Customer>().animator.SetBool("SittingTalking", false);//+90rot
             customer.GetComponent<Customer>().animator.SetBool("SittingAngry", true);//+90rot
-            PlayerController.instance.MoneyCount -= 10;
-            PlayerController.instance.MoneyText.text = PlayerController.instance.MoneyCount.ToString();
+
+            //PlayerController.instance.MoneyCount -= 10;
+            //PlayerController.instance.MoneyText.text = PlayerController.instance.MoneyCount.ToString();
+            //PlayerPrefs.SetInt("Money", PlayerController.instance.MoneyCount);
+            //PlayerController.instance.MoneyText.text = PlayerPrefs.GetInt("Money").ToString();
 
             yield return new WaitForSeconds(2f);
             customer.GetComponent<Customer>().customerLeaveControl = true;
@@ -198,32 +236,3 @@ public class Order : MonoBehaviour
         }
     }
 }
-//public void CustomerRequests()//müþteri Ýstekleri 
-//{
-//    if (CustomerOnChair.Count != 0 && PlayerController.instance.PizzaStackObject.Count != 0)
-//    {
-//        pizzalistCount = PlayerController.instance.PizzaStackObject.Count;
-//        CustomerlistCount = CustomerOnChair.Count;
-//        for (int i = pizzalistCount - 1; i >= 0; i--)
-//        {
-//            if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id == CustomerOnChair[0].GetComponent<Customer>().CustomerId && CustomerOnChair[0].GetComponent<Customer>().customerHasPizza)
-//            {
-//                GivePizza(0, i);
-//                CustomerOnChair[0].GetComponent<Customer>().customerHasPizza = false;
-//                break;
-//            }
-
-//            if (CustomerOnChair.Count == 1)
-//                break;
-//            else
-//            {
-//                if (PlayerController.instance.PizzaStackObject[i].GetComponent<pizza>().id == CustomerOnChair[1].GetComponent<Customer>().CustomerId && CustomerOnChair[1].GetComponent<Customer>().customerHasPizza)
-//                {
-//                    GivePizza(1, i);
-//                    CustomerOnChair[1].GetComponent<Customer>().customerHasPizza = false;
-//                    break;
-//                }
-//            }
-//        }
-//    }
-//}

@@ -56,7 +56,6 @@ public class GameArea : MonoBehaviour
             if (UIManager.instance.chairCount>=PlayerPrefs.GetInt("Chair"))
             {
                 PlayerPrefs.SetInt("Chair", UIManager.instance.chairCount);
-                Debug.Log(PlayerPrefs.GetInt("Chair"));
             }
 
         }
@@ -66,7 +65,6 @@ public class GameArea : MonoBehaviour
             if (UIManager.instance.fieldCount >= PlayerPrefs.GetInt("Field"))
             {
                 PlayerPrefs.SetInt("Field", UIManager.instance.fieldCount);
-                Debug.Log(PlayerPrefs.GetInt("Field"));
             }
 
         }
@@ -76,7 +74,6 @@ public class GameArea : MonoBehaviour
             if (UIManager.instance.counterCount >= PlayerPrefs.GetInt("Counter"))
             {
                 PlayerPrefs.SetInt("Counter", UIManager.instance.counterCount);
-                Debug.Log(PlayerPrefs.GetInt("Counter"));
             }
 
         }
@@ -87,7 +84,6 @@ public class GameArea : MonoBehaviour
             if (UIManager.instance.FieldAreaCount >= PlayerPrefs.GetInt("FieldArea"))
             {
                 PlayerPrefs.SetInt("FieldArea", UIManager.instance.FieldAreaCount);
-                Debug.Log(PlayerPrefs.GetInt("FieldArea"));
             }
         }
         if (id == "MushroomArea")
@@ -96,7 +92,6 @@ public class GameArea : MonoBehaviour
             if (UIManager.instance.mushroomAreaCount >= PlayerPrefs.GetInt("MushroomArea"))
             {
                 PlayerPrefs.SetInt("MushroomArea", UIManager.instance.mushroomAreaCount);
-                Debug.Log(PlayerPrefs.GetInt("MushroomArea"));
             }
         }
         if (id == "PineappleArea")
@@ -105,7 +100,6 @@ public class GameArea : MonoBehaviour
             if (UIManager.instance.PineappleAreaCount >= PlayerPrefs.GetInt("PineappleArea"))
             {
                 PlayerPrefs.SetInt("PineappleArea", UIManager.instance.PineappleAreaCount);
-                Debug.Log(PlayerPrefs.GetInt("PineappleArea"));
             }
         }
         if (id == "pepperArea")
@@ -114,7 +108,6 @@ public class GameArea : MonoBehaviour
             if (UIManager.instance.pepperAreaCount >= PlayerPrefs.GetInt("pepperArea"))
             {
                 PlayerPrefs.SetInt("pepperArea", UIManager.instance.pepperAreaCount);
-                Debug.Log(PlayerPrefs.GetInt("pepperArea"));
             }
         }
     }
@@ -166,7 +159,8 @@ public class GameArea : MonoBehaviour
 
             PlayerController.instance.MoneyCount -= 10;
             PlayerController.instance.MoneyText.text = PlayerController.instance.MoneyCount.ToString();
-
+            PlayerPrefs.SetInt("Money", PlayerController.instance.MoneyCount);
+            PlayerController.instance.MoneyText.text = PlayerPrefs.GetInt("Money").ToString();
             areaCount -= 10;
             PlayerPrefs.SetInt(PrefsId, areaCount);
             areaText.text = PlayerPrefs.GetInt(PrefsId).ToString();

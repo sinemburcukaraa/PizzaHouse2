@@ -24,24 +24,40 @@ public class PlayerController : MonoBehaviour
     public float objDistanceY;
     GameObject counterColT;
     public bool isExit;
-    public int MoneyCount = 20;
+    public int MoneyCount = 50;
     public TextMeshProUGUI MoneyText;
     public GameObject Player;
+    public bool startMoneyCont = false;
+
+
     private void Start()
     {
+        StartMoney();
         Player = this.gameObject;
-        moneyCountControl();
+
+        int prefs = PlayerPrefs.GetInt("Money");
+        MoneyText.text = prefs.ToString();
+
+    }
+    public void StartMoney()
+    {
+        print(PlayerPrefs.GetInt("SM") == 0);
+        if (PlayerPrefs.GetInt("SM") == 0)
+        {
+            PlayerPrefs.SetInt("Money", MoneyCount);
+            PlayerPrefs.SetInt("SM", 1);
+        }
     }
     private void Awake()
     {
         if (!instance)
         {
             instance = this;
-        }        
+        }
     }
-    public void speedControl() 
+    public void speedControl()
     {
-        if (CustomerChairControl.instance.ChairCount.Count>=4 && CustomerChairControl.instance.ChairCount.Count <= 6)
+        if (CustomerChairControl.instance.ChairCount.Count >= 4 && CustomerChairControl.instance.ChairCount.Count <= 6)
         {
             moveSpeed = 6;
         }
@@ -49,11 +65,11 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = 7;
         }
-        else if(CustomerChairControl.instance.ChairCount.Count >= 11 && CustomerChairControl.instance.ChairCount.Count <= 12)
+        else if (CustomerChairControl.instance.ChairCount.Count >= 11 && CustomerChairControl.instance.ChairCount.Count <= 12)
         {
             moveSpeed = 8;
         }
-        else if(CustomerChairControl.instance.ChairCount.Count >= 13)
+        else if (CustomerChairControl.instance.ChairCount.Count >= 13)
         {
             moveSpeed = 9;
         }
@@ -147,10 +163,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void moneyCountControl()
-    {
-        MoneyText.text = MoneyCount.ToString();
-    }
 
     public void ReSort(List<GameObject> StackObject)
     {
