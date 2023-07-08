@@ -13,8 +13,7 @@ public class AreaManager : MonoBehaviour
     public static AreaManager instance;
     public bool win;
     public GameObject gamePanel;
-    bool winbool;
-    public void CreatePlayerPrefs() 
+    public void CreatePlayerPrefs()
     {
 
         for (int i = 0; i < PlayerPrefs.GetInt("Chair"); i++)
@@ -77,7 +76,7 @@ public class AreaManager : MonoBehaviour
 
     private void Start()
     {
-        if (this.transform.childCount!=0)
+        if (this.transform.childCount != 0)
         {
             this.transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -85,14 +84,13 @@ public class AreaManager : MonoBehaviour
         {
         });
     }
-    private void Update()
-    {
-        if (this.transform.childCount==0 && PlayerController.instance.MoneyCount>=1000 && !winbool)
-        {
-            winbool = true;
-            UIManager.instance.OpenWinPanel();
-            gamePanel.SetActive(false);
-        }
-
-    }
+    //private void Update()
+    //{
+    //    //if (this.transform.childCount == 0 && PlayerController.instance.MoneyCount >= 1000 && !winbool)
+    //    //{
+    //    //    winbool = true;
+    //    //    UIManager.instance.OpenWinPanel();
+    //    //    gamePanel.SetActive(false);
+    //    //}
+    //}
 }
