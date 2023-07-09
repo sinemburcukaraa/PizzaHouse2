@@ -85,3 +85,4 @@ Material:
     - _RimColor: {r: 0.7877358, g: 0.8892427, b: 1, a: 0}
     - _SpecColor: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 1}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  m_BuildTextureStacks: []
